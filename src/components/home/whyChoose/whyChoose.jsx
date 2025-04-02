@@ -3,28 +3,13 @@ import { Code, Database, Rocket } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
 const WhyChooseUs = () => {
-  const titleRef = useRef(null);
-  const descRef = useRef(null);
-  const featureRef = useRef(null);
-  const imageRef = useRef(null);
-
-  // Individual in-view checks
-  const isTitleInView = useInView(titleRef, { once: true, margin: "-100px" });
-  const isDescInView = useInView(descRef, { once: true, margin: "-100px" });
-  const isFeatureInView = useInView(featureRef, {
-    once: true,
-    margin: "-100px",
-  });
-  const isImageInView = useInView(imageRef, { once: true, margin: "-100px" });
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   // Animation variants
   const textVariants = {
     hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const featureVariants = {
@@ -32,111 +17,74 @@ const WhyChooseUs = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.3 },
+      transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.2 },
     },
   };
 
   const imageVariants = {
-    hidden: { y: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeInOut" },
-    },
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeInOut" } },
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly w-full max-w-7xl mx-auto px-4 py-10 md:py-16 mt-8 gap-16">
-      {/* Left Section */}
-      <div className="w-full md:w-1/2 max-w-lg">
-        {/* Title */}
-        <motion.h2
-          ref={titleRef}
-          initial="hidden"
-          animate={isTitleInView ? "visible" : "hidden"}
-          variants={textVariants}
-          className="text-4xl font-medium mb-6 relative inline-block"
+    <section ref={sectionRef} className="w-full py-16 bg-gray-100">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-12 gap-12">
+        
+        {/* Left Content */}
+        <motion.div 
+          initial="hidden" 
+          animate={isInView ? "visible" : "hidden"} 
+          variants={textVariants} 
+          className="w-full md:w-1/2 space-y-6"
         >
-          Why Choose Our Tech Stack?
-        </motion.h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
+            Why Choose Our <span className="text-blue-600">Tech Stack?</span>
+          </h2>
+          
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Every project starts with cutting-edge technology selection. We carefully choose the best tools and frameworks that match your project needs, ensuring **scalability**, **performance**, and **maintainability**.
+          </p>
 
-        {/* Description */}
-        <motion.p
-          ref={descRef}
-          className="text-gray-700 mb-8 text-lg"
-          initial="hidden"
-          animate={isDescInView ? "visible" : "hidden"}
-          variants={textVariants}
-        >
-          Every project starts with cutting-edge technology selection. We
-          carefully choose the best tools and frameworks that match your project
-          requirements, ensuring scalability, performance, and maintainable
-          code.
-        </motion.p>
-
-        {/* Features with staggered animation */}
-        <motion.div
-          ref={featureRef}
-          className="space-y-6"
-          initial="hidden"
-          animate={isFeatureInView ? "visible" : "hidden"}
-          variants={featureVariants}
-        >
-          <motion.div
-            className="flex items-center gap-4"
-            variants={textVariants}
+          {/* Features List */}
+          <motion.div 
+            initial="hidden" 
+            animate={isInView ? "visible" : "hidden"} 
+            variants={featureVariants} 
+            className="space-y-5"
           >
-            <div className="text-[#003f8c]">
-              <Code size={24} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">Modern Development</h3>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center gap-4"
-            variants={textVariants}
-          >
-            <div className="text-[#003f8c]">
-              <Database size={24} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">Scalable Architecture</h3>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center gap-4"
-            variants={textVariants}
-          >
-            <div className="text-[#003f8c]">
-              <Rocket size={24} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">Optimized Performance</h3>
-            </div>
+            {[
+              { icon: <Code size={28} />, title: "Modern Development" },
+              { icon: <Database size={28} />, title: "Scalable Architecture" },
+              { icon: <Rocket size={28} />, title: "Optimized Performance" },
+            ].map((item, index) => (
+              <motion.div 
+                key={index} 
+                className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
+                variants={textVariants}
+              >
+                <div className="text-blue-600">{item.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
-      </div>
 
-      {/* Right Image */}
-       <motion.div
-        ref={imageRef}
-        className="w-full md:w-1/2 max-w-lg flex justify-center md:justify-end"
-        initial="hidden"
-        animate={isImageInView ? "visible" : "hidden"}
-        variants={imageVariants}
-      >
-        <div className="relative w-full max-w-full">
+        {/* Right Image */}
+        <motion.div 
+          initial="hidden" 
+          animate={isInView ? "visible" : "hidden"} 
+          variants={imageVariants} 
+          className="w-full md:w-1/2 flex justify-center"
+        >
           <img
             src="https://img.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg"
-            alt="Developers collaborating on code review"
-            className="w-full h-auto rounded-lg object-cover"
+            alt="Tech Stack Illustration"
+            className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
           />
-        </div>
-      </motion.div>
-    </div>
+        </motion.div>
+
+      </div>
+    </section>
   );
 };
 

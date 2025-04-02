@@ -1,45 +1,96 @@
+/* Hero Section */
 .hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #003f8c;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 4rem 1rem;
   color: white;
-  position: relative;
-  padding: 2rem;
-  background-color: #003f8c;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-  overflow: hidden;
 }
 
-/* svg {
-  display: inline-block;
-  position: absolute;
-  bottom: -30px; 
-  left: 0;
-  transform: rotate(0deg); 
-  width: 100%; 
-} */
-
-@media (max-width: 1024px) {
-  svg {
-    bottom: -5px; /* Adjust bottom position for tablets */
-  }
-}
-
-/* Small screens (large phones) */
-@media (max-width: 768px) {
-  svg {
-    bottom: 0px; /* Align closer to the bottom on smaller screens */
-  }
-}
-
-/* Extra small screens (small phones) */
-@media (max-width: 480px) {
-  svg {
-    bottom: -10px; /* Further adjust for very small screens */
-  }
-}
-
+/* Container */
 .container {
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Adjust layout for larger screens */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+/* Text Content */
+.text-content {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #a0c4ff;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.highlight {
+  color: #4fc3f7;
+}
+
+/* CTA Button */
+.cta-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: white;
+  color: black;
+}
+
+/* Image Section */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+@media (min-width: 1024px) {
+  .hero-image {
+    max-height: 450px;
+  }
 }

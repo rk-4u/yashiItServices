@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import InstantTopLink from "../../utils/instantTopLink";
 
 function Navbar() {
@@ -7,19 +7,15 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Determine if the current route is `projectDetail/${project.id}`
+  // Detect if user is on a project detail page
   const isProjectDetailPage = location.pathname.startsWith("/projectDetail/");
 
-  // Function to handle scroll event
+  // Handle scroll event
   const handleScroll = () => {
-    if (window.scrollY > 10) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    setScrolled(window.scrollY > 10);
   };
 
-  // Set the initial state based on scroll position when the component mounts
+  // Setup event listeners
   useEffect(() => {
     if (!isProjectDetailPage) {
       handleScroll();
@@ -33,106 +29,72 @@ function Navbar() {
     };
   }, [isProjectDetailPage]);
 
+  // Close menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]); // Closes menu on route change
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full flex items-center justify-between p-4 transition-all duration-300 z-50 ${
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 transition-all duration-300 z-50 ${
         isProjectDetailPage || scrolled
-          ? "bg-white text-black"
-          : "bg-transparent text-white"
+          ? "bg-white text-black shadow-md" // White background with black text
+          : "bg-transparent text-white" // Transparent with white text
       }`}
     >
-      {/* Logo */}
-      <div className="font-bold text-2xl">Yashi IT Services</div>
+      {/* Clickable Logo */}
+      <Link 
+          to="/" 
+          className={`font-bold text-2xl tracking-normal leading-none 
+                      transition duration-300 
+                      ${scrolled ? "text-black" : "text-white"}`}
+        >
+          Yashi IT Services
+        </Link>
 
-      {/* Menu items for larger screens */}
-      <div className="hidden lg:flex space-x-6">
-        <InstantTopLink
-          to="/"
-          className="font-normal text-current hover:text-current"
-          onClose={() => setMenuOpen(false)} // Close menu on link click
-        >
-          Home
-        </InstantTopLink>
-        <InstantTopLink
-          to="/portfolio"
-          className="font-normal text-current hover:text-current"
-          onClose={() => setMenuOpen(false)} // Close menu on link click
-        >
-          Portfolio
-        </InstantTopLink>
-        <InstantTopLink
-          to="/services"
-          className="font-normal text-current hover:text-current"
-          onClose={() => setMenuOpen(false)} // Close menu on link click
-        >
-          Services
-        </InstantTopLink>
-        <InstantTopLink
-          to="/contactUs"
-          className="font-normal text-current hover:text-current"
-          onClose={() => setMenuOpen(false)} // Close menu on link click
-        >
-          Contact
-        </InstantTopLink>
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-6">
+        {["Home", "Portfolio", "Services", "ContactUs"].map((item, index) => (
+          <InstantTopLink
+            key={index}
+            to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+            className={`font-medium transition duration-300 ${
+              scrolled || isProjectDetailPage
+                ? "text-black hover:text-gray-600"
+                : "text-white hover:text-gray-300"
+            }`}
+          >
+            {item}
+          </InstantTopLink>
+        ))}
       </div>
 
-      {/* Search and Hamburger Menu */}
-      <div className="flex items-center space-x-4">
-        <button
-          className={`lg:hidden ${
-            scrolled || isProjectDetailPage ? "text-black" : "text-white"
-          }`}
-          onClick={() => {
-            console.log("Toggling menu:", !menuOpen);
-            setMenuOpen(!menuOpen);
-          }}
-        >
-          ☰
-        </button>
-      </div>
-
-      {/* Hamburger menu for smaller screens */}
-      <div
-        className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 transform ${
-          menuOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 lg:hidden`}
+      {/* Mobile Menu Button (Burger/Close) */}
+      <button
+        className={`md:hidden text-3xl z-50 relative ${
+          scrolled || isProjectDetailPage ? "text-black" : "text-white"
+        }`}
+        onClick={() => setMenuOpen(!menuOpen)}
       >
-        <button
-          className="absolute top-4 right-4 text-white text-3xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          ×
-        </button>
-        <div className="flex flex-col items-center justify-center h-full space-y-6 text-white">
+        {menuOpen ? "×" : "☰"}
+      </button>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 transform ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white md:hidden`}
+      >
+        {["Home", "Portfolio", "Services", "ContactUs"].map((item, index) => (
           <InstantTopLink
-            to="/"
-            className="text-lg"
-            onClose={() => setMenuOpen(false)} // Close menu on link click
+            key={index}
+            to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+            className="text-xl font-semibold text-white hover:text-gray-400 transition duration-300"
           >
-            Home
+            {item}
           </InstantTopLink>
-          <InstantTopLink
-            to="/portfolio"
-            className="text-lg"
-            onClose={() => setMenuOpen(false)} // Close menu on link click
-          >
-            Portfolio
-          </InstantTopLink>
-          <InstantTopLink
-            to="/services"
-            className="text-lg"
-            onClose={() => setMenuOpen(false)} // Close menu on link click
-          >
-            Services
-          </InstantTopLink>
-          <InstantTopLink
-            to="/contactUs"
-            className="text-lg"
-            onClose={() => setMenuOpen(false)} // Close menu on link click
-          >
-            Contact
-          </InstantTopLink>
-        </div>
+        ))}
       </div>
     </nav>
   );

@@ -51,14 +51,14 @@ const Testimonials = () => {
       text: "The templates from this site have completely transformed my business website. They're sleek, modern, and easy to customize. I couldn't be happier with the results!",
       name: "Anna Willow",
       title: "Marketing Director",
-      avatar: "/api/placeholder/40/40",
+      avatar: "https://media.istockphoto.com/id/1135381120/photo/portrait-of-a-young-woman-outdoors-smiling.jpg?s=1024x1024&w=is&k=20&c=3jNReWPZuYJ2v6FGU3-sYMTBnkGDKWN8oYGfNDD6E1Y=",
     },
     {
       id: 2,
       text: "Exceptional templates with a professional touch! My corporate website now looks fantastic, and I've received numerous compliments from clients and colleagues.",
       name: "Jacob Gray",
       title: "Creative Developer",
-      avatar: "/api/placeholder/40/40",
+      avatar: "https://media.istockphoto.com/id/1135381120/photo/portrait-of-a-young-woman-outdoors-smiling.jpg?s=1024x1024&w=is&k=20&c=3jNReWPZuYJ2v6FGU3-sYMTBnkGDKWN8oYGfNDD6E1Y=",
     },
     {
       id: 3,

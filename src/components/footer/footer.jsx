@@ -1,163 +1,160 @@
 import React from "react";
-import {
-  FaBehance,
-  FaTwitter,
-  FaFacebook,
-  FaLinkedin,
-  FaInstagram,
-  FaPinterest,
-  FaSkype,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { servicesContent } from "../../utils/servicesContent";
-import InstantTopLink from "../../utils/instantTopLink";
-import { projects } from "../../utils/projects";
+import { Link } from "react-router-dom";  // Import Link for navigation
+import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from "mdb-react-ui-kit";
 
-const servicesData = [
-  "Website Design & Development",
-  "Mobile App Development",
-  "E-Commerce and CMS",
-  "Animation",
-  "Designing",
-];
-
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8 sm:py-8 md:py-14">
-      <div className="container mx-auto px-4 sm:px-0 md:px-0 lg:px-8 max-w-full sm:max-w-screen-sm md:max-w-screen-2xl lg:max-w-screen-xl xl:max-w-screen-xl">
-        <div className="flex flex-col md:flex-row md:justify-around px-4 md:px-0 lg:px-0 py-8 md:py-10 space-y-8 md:space-y-0">
-          {/* Logo and Description */}
-          <div className="w-[100%] md:w-[33%] lg:w-[28%] text-left md:text-left">
-            <h1 className="text-4xl sm:text-3xl md:text-[2rem] lg:text-4xl font-bold text-white mb-2 sm:mb-4">
-              Yashi IT Services
-            </h1>
-            {/* <p className="text-sm sm:text-sm uppercase text-red-500 mb-2 sm:mb-4">
-              Innovation • Passion • Dedication
-            </p> */}
-            <p className="text-sm sm:text-sm leading-relaxed">
-              Yashi IT Services is an established web development and design
-              company that works with companies in all sectors of business. We
-              combine the latest technologies, tools, and frameworks with years
-              of experience to deliver customized, reliable, and efficient
-              solutions.
-            </p>
-            <div className="mt-6 sm:mt-10 space-y-2 text-xs sm:text-sm">
-              <p className="flex justify-left md:justify-start items-left space-x-2">
-                <span role="img" aria-label="phone">
-                  📞
-                </span>
-                <span className="text-sm">+91-9876543213</span>
-              </p>
-              <p className="flex justify-left md:justify-start items-left space-x-2">
-                <span role="img" aria-label="email">
-                  ✉️
-                </span>
-                <span className="text-sm">info@yashiitservice.in</span>
-              </p>
-              <p className="flex justify-left md:justify-start items-left space-x-2">
-                <span role="img" aria-label="hr">
-                  📧
-                </span>
-                <span className="text-sm">hr@yashiitservice.in</span>
-              </p>
-              <p className="flex justify-left md:justify-start items-left space-x-2">
-                <span role="img" aria-label="social">
-                  🔗
-                </span>
-                <span className="text-sm">Yashiitservices</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Links Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-4 md:w-[50%] text-left md:text-left">
-            {/* Our Company */}
-            <div className="w-full">
-              <h2 className="text-white text-lg sm:text-lg font-semibold mb-3 sm:mb-4">
-                Our Company
-              </h2>
-              <ul className="text-sm sm:text-xs flex flex-col space-y-1 sm:space-y-2">
-                <InstantTopLink to="/" className="block hover:text-gray-500">
-                  <li>Home</li>
-                </InstantTopLink>
-                <InstantTopLink
-                  to="/portfolio"
-                  className="block hover:text-gray-500"
-                >
-                  <li>Portfolio</li>
-                </InstantTopLink>
-                <InstantTopLink
-                  to="/contactUs"
-                  className="block hover:text-gray-500"
-                >
-                  <li>Contact Us</li>
-                </InstantTopLink>
-                <InstantTopLink
-                  to="/services"
-                  className="block hover:text-gray-500"
-                >
-                  <li>Services</li>
-                </InstantTopLink>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="w-[105%] lg:w-[80%]">
-              <h2 className="text-white text-lg sm:text-lg font-semibold mb-3 sm:mb-4">
-                Services
-              </h2>
-              <ul className="space-y-1 sm:space-y-2 text-sm sm:text-xs">
-                {servicesContent.map((service) => (
-                  <li key={service.id}>
-                    <InstantTopLink
-                      className="hover:text-gray-500"
-                      to={`/services/${service.slug}`} // Use slug instead of id
-                    >
-                      {service.title}
-                    </InstantTopLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Portfolio */}
-            <div className="w-full mt-0 sm:mt-8 md:mt-0">
-              <h2 className="text-white text-lg sm:text-lg font-semibold mb-3 sm:mb-4">
-                Portfolio
-              </h2>
-              <ul className="space-y-1 sm:space-y-2 text-sm sm:text-xs">
-                {projects.map((project) => (
-                  <li key={project.id}>
-                    <InstantTopLink
-                      className="hover:text-gray-500"
-                      to={`/projectDetail/${project.slug}`}
-                    >
-                      {project.title}
-                    </InstantTopLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+    <MDBFooter style={{ backgroundColor: "#111826", color: "white" }} className="text-center text-lg-start text-white">
+      
+      {/* Social Media Section */}
+      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div className="me-5 d-none d-lg-block">
+          <span>Get connected with us on social networks:</span>
         </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-gray-700 pt-4 mt-8 flex flex-col md:flex-row md:justify-around items-center text-xs sm:text-sm">
-          <p className="text-gray-400 mb-4 md:mb-0 text-center">
-            © 2024 Yash IT Services Pvt. Ltd. All Rights Reserved.
-          </p>
-          <div className="flex justify-left space-x-4 sm:space-x-6 text-gray-400">
-            <FaTwitter className="text-lg sm:text-xl" />
-            <FaFacebook className="text-lg sm:text-xl" />
-            <FaLinkedin className="text-lg sm:text-xl" />
-            <FaInstagram className="text-lg sm:text-xl" />
-            <FaPinterest className="text-lg sm:text-xl" />
-            <FaSkype className="text-lg sm:text-xl" />
-          </div>
+        <div>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="facebook-f" />
+          </a>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="twitter" />
+          </a>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="google" />
+          </a>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="instagram" />
+          </a>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="linkedin" />
+          </a>
+          <a href="#" className="me-4 text-reset">
+            <MDBIcon fab icon="github" />
+          </a>
         </div>
+      </section>
+
+      {/* Footer Content */}
+      <section className="">
+        <MDBContainer className="text-center text-md-start mt-5">
+          <MDBRow className="mt-3">
+            
+            {/* Company Info */}
+            <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
+                <MDBIcon icon="gem" className="me-3" />
+                Yashi IT Services
+              </h6>
+              <p>
+                Yashi IT Services is an established web development and design company that works with companies in all sectors of business. We combine the latest technologies, tools, and frameworks with years of experience to deliver customized, reliable, and efficient solutions.
+              </p>
+            </MDBCol>
+
+            {/* Our Company Section */}
+            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Our Company</h6>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/" className="text-reset d-block">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/portfolio" className="text-reset d-block">
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contactUs" className="text-reset d-block">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-reset d-block">
+                    Services
+                  </Link>
+                </li>
+              </ul>
+            </MDBCol>
+
+            {/* Services Section */}
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Services</h6>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/services/Web-Development" className="text-reset d-block">
+                    Web Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/Mobile-Development" className="text-reset d-block">
+                    Mobile Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/Backend-Development" className="text-reset d-block">
+                    Backend Development
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/DevOps-&-Automation" className="text-reset d-block">
+                    DevOps & Automation
+                  </Link>
+                </li>
+              </ul>
+            </MDBCol>
+
+            {/* Portfolio Section */}
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Portfolio</h6>
+              <ul className="list-unstyled">
+                <li>
+                  <Link to="/projectDetail/E-Commerce" className="text-reset d-block">
+                    E-commerce UI
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/projectDetail/Saas-Dashboard" className="text-reset d-block">
+                    SaaS Dashboard Frontend
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/projectDetail/Portfolio-Website" className="text-reset d-block">
+                    Personal Portfolio Website
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/projectDetail/Interactive-Blog" className="text-reset d-block">
+                    Interactive Blog Platform
+                  </Link>
+                </li>
+              </ul>
+            </MDBCol>
+
+            {/* Contact Section */}
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
+              <p>
+                <MDBIcon icon="phone" className="me-3" />
+                +91-8720885782
+              </p>
+              <p>
+                <MDBIcon icon="envelope" className="me-3" />
+                info@yashiitservice.in
+              </p>
+              <p>
+                <MDBIcon icon="link" className="me-3" />
+                Yashiitservices
+              </p>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </section>
+
+      {/* Horizontal Line & Copyright */}
+      <hr className="my-4" />
+      <div className="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
+        © 2024 Yashi IT Services Pvt. Ltd. All Rights Reserved.
       </div>
-    </footer>
+    </MDBFooter>
   );
-};
-
-export default Footer;
+}

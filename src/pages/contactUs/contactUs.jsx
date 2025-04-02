@@ -7,70 +7,109 @@ import "./contactUs.css";
 
 const ContactUs = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [contacts, setContacts] = useState([])
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    FirstName: "",
+    LastName: "",
     email: "",
-    phoneNumber: "",
-    message: "",
+    phone: "",
+    Message: "",
   });
 
   useEffect(() => {
-    console.log('Backend URL:', process.env.REACT_APP_BACKEND_URL);
-    const fetchContacts = async() => {
+    console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
+    const fetchContacts = async () => {
       try {
-    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-        const response = await axios.get(`${BACKEND_URL}/api/v1/getAllContacts`)
-        console.log("Fetched contacts", response.data)
-        setContacts(response.data)
-      } catch (error) {
-        console.log("Error fetching contacts:", error)
-        setError("Failed to load contacts")
-      } finally {
-        setLoading(false)
-      }
-    }
+        const BACKEND_URL = "https://vercelbackend-cfcd.onrender.com";
+        const response = await axios.get(
+          `${BACKEND_URL}/api/v1/getAllContacts`
+        );
 
-    fetchContacts()
-  }, [])
-  
+        if (response.data && Array.isArray(response.data.contacts)) {
+          setContacts(response.data.contacts); // Ensure it's an array
+        } else {
+          console.log("Unexpected data format", response.data);
+        }
+      } catch (error) {
+        console.log("Error fetching contacts:", error);
+        setError("Failed to load contacts");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchContacts();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
+
+    let newValue = value;
+
+    // If the input is "phone", apply number validation
+    if (name === "phone") {
+      newValue = value.replace(/[^0-9\s\-()]/g, ""); // Allow only numbers, spaces, dashes, and parentheses
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: newValue,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+  
     try {
-      const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-      const response = await axios.post(
-        `${BACKEND_URL}/api/v1/createContact`,
-        formData
-      );
+      const BACKEND_URL = "https://vercelbackend-cfcd.onrender.com"; // Base URL
+  
+      // Form data to be sent
+      const requestData = {
+        FirstName: formData.FirstName.trim(),
+        LastName: formData.LastName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        Message: formData.Message.trim(),
+      };
+  
+      console.log("Sending data:", requestData); // Debugging: Check the payload before sending
+  
+      // API request to the backend
+      const response = await axios.post(`${BACKEND_URL}/users/register`, requestData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
       console.log("Contact Created Successfully", response.data);
       alert("Thank you! Your message has been sent.");
+  
+      // Reset form fields
       setFormData({
-        firstName: "",
-        lastName: "",
+        FirstName: "",
+        LastName: "",
         email: "",
-        phoneNumber: "",
-        message: "",
+        phone: "",
+        Message: "",
       });
     } catch (error) {
-      console.error("Error creating contact:", error);
-      alert("Something went wrong. Please try again.");
+      console.error("Error response:", error.response);
+      console.error("Error message:", error.message);
+  
+      let errorMessage = "Something went wrong. Please try again.";
+      if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      }
+  
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   const animationVariants = {
     initial: { opacity: 0, y: 50 },
@@ -213,8 +252,8 @@ const ContactUs = () => {
                         </label>
                         <input
                           type="text"
-                          name="firstName"
-                          value={formData.firstName}
+                          name="FirstName"
+                          value={formData.FirstName}
                           onChange={handleChange}
                           required
                           placeholder="First name"
@@ -229,8 +268,8 @@ const ContactUs = () => {
                         </label>
                         <input
                           type="text"
-                          name="lastName"
-                          value={formData.lastName}
+                          name="LastName"
+                          value={formData.LastName}
                           onChange={handleChange}
                           required
                           className="mt-1 sm:mt-2 block w-full rounded-md border border-gray-400 bg-white shadow-sm focus:border-yellow-500 focus:ring-yellow-500 px-2 py-1.5 text-sm sm:text-base"
@@ -270,12 +309,12 @@ const ContactUs = () => {
                         </label>
                         <input
                           type="tel"
-                          name="phoneNumber"
-                          value={formData.phoneNumber}
+                          name="phone"
+                          value={formData.phone}
                           onChange={handleChange}
                           required
                           className="mt-1 sm:mt-2 block w-full rounded-md border border-gray-400 bg-white shadow-sm focus:border-yellow-500 focus:ring-yellow-500 px-2 py-1.5 text-sm sm:text-base"
-                          placeholder="Phone number"
+                          placeholder="Phone number (e.g., +1 (123) 456-7890)"
                         />
                       </motion.div>
                     </motion.div>
@@ -292,8 +331,8 @@ const ContactUs = () => {
                         Message
                       </label>
                       <textarea
-                        name="message"
-                        value={formData.message}
+                        name="Message"
+                        value={formData.Message}
                         onChange={handleChange}
                         required
                         rows={4}
@@ -406,4 +445,3 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
-
