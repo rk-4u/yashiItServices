@@ -33,7 +33,7 @@ const TiltCard = ({ children }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transform, transition }}
-      className="rounded-xl overflow-hidden shadow-md transition-transform"
+      className="rounded-xl overflow-hidden shadow-lg transition-transform"
     >
       {children}
     </div>
@@ -53,7 +53,18 @@ const ProjectCard = ({ project, index }) => {
       className="md:w-[90%] lg:w-[85%] mx-auto mb-6 md:mb-10"
     >
       <TiltCard>
-        <div className="relative overflow-hidden rounded-2xl">
+        <div
+          className="relative overflow-hidden rounded-2xl"
+          style={{
+            background: "rgba(255, 255, 255, 0.15)",
+            backdropFilter: "blur(18px) saturate(180%)",
+            WebkitBackdropFilter: "blur(18px) saturate(180%)",
+            borderRadius: "12px",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.3)",
+            transition: "all 0.3s ease-in-out",
+          }}
+        >
           <img
             src={project.image}
             alt={project.title}
@@ -62,16 +73,27 @@ const ProjectCard = ({ project, index }) => {
         </div>
       </TiltCard>
 
-      <div className="py-4 px-5 bg-white shadow-md rounded-b-2xl">
-        <h3 className="text-xl md:text-2xl font-semibold mb-2 text-gray-900">
+      <div
+        className="py-4 px-5 rounded-b-2xl"
+        style={{
+          background: "rgba(255, 255, 255, 0.12)",
+          backdropFilter: "blur(22px) saturate(180%)",
+          WebkitBackdropFilter: "blur(22px) saturate(180%)",
+          borderRadius: "15px",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.4)",
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
+        <h3 className="text-xl md:text-2xl font-semibold mb-2 text-white">
           {project.id}. {project.title}
         </h3>
-        <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
           {project.description}
         </p>
 
         <InstantTopLink to={`/projectDetail/${project.slug}`}>
-          <button className="mt-4 px-5 py-2 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-[#003f8c] hover:text-white transition-all duration-300">
+          <button className="mt-4 px-5 py-2 border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300">
             View Detail
           </button>
         </InstantTopLink>
@@ -82,15 +104,34 @@ const ProjectCard = ({ project, index }) => {
 
 const RecentProjects = () => {
   return (
-    <section className="bg-gray-100 text-black py-16 px-6">
+    <section
+      className="text-white py-16 px-6"
+      style={{
+        background: "rgba(0, 0, 0, 0.3)",
+        backdropFilter: "blur(20px) saturate(150%)",
+        WebkitBackdropFilter: "blur(20px) saturate(150%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div
+          className="text-center mb-8"
+          style={{
+            background: "rgba(255, 255, 255, 0.12)",
+            backdropFilter: "blur(22px) saturate(180%)",
+            WebkitBackdropFilter: "blur(22px) saturate(180%)",
+            borderRadius: "15px",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: "0px 6px 16px rgba(0, 0, 0, 0.4)",
+            padding: "2.5rem",
+            transition: "all 0.3s ease-in-out",
+          }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Recent Projects
           </h2>
-          <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto">
-            At Hexaly, we deliver **innovative solutions** that drive results. 
-            Here are some of our **recent projects**, showcasing our expertise.
+          <p className="text-base md:text-lg text-gray-300 max-w-4xl mx-auto">
+            At Hexaly, we deliver <strong>innovative solutions</strong> that drive results.
+            Here are some of our <strong>recent projects</strong>, showcasing our expertise.
           </p>
         </div>
 
@@ -102,7 +143,7 @@ const RecentProjects = () => {
 
         <div className="text-center mt-10">
           <InstantTopLink to="/portfolio">
-            <button className="px-7 py-3 bg-[#003f8c] text-white rounded-full text-lg shadow-md hover:bg-blue-800 transition-all duration-300">
+            <button className="px-7 py-3 bg-white text-black rounded-full text-lg shadow-md hover:bg-gray-300 transition-all duration-300">
               View More
             </button>
           </InstantTopLink>

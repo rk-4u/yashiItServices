@@ -1,11 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";  // Import Link for navigation
+import { Link } from "react-router-dom";
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from "mdb-react-ui-kit";
 
 export default function Footer() {
   return (
-    <MDBFooter style={{ backgroundColor: "#111826", color: "white" }} className="text-center text-lg-start text-white">
-      
+    <MDBFooter
+      className="text-center text-lg-start text-white"
+      style={{
+        background: "rgba(255, 255, 255, 0.1)", // Light transparency
+        backdropFilter: "blur(10px)", // Frosted glass effect
+        WebkitBackdropFilter: "blur(10px)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.3)",
+      }}
+    >
       {/* Social Media Section */}
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
@@ -34,10 +41,9 @@ export default function Footer() {
       </section>
 
       {/* Footer Content */}
-      <section className="">
+      <section>
         <MDBContainer className="text-center text-md-start mt-5">
           <MDBRow className="mt-3">
-            
             {/* Company Info */}
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
@@ -45,7 +51,7 @@ export default function Footer() {
                 Yashi IT Services
               </h6>
               <p>
-                Yashi IT Services is an established web development and design company that works with companies in all sectors of business. We combine the latest technologies, tools, and frameworks with years of experience to deliver customized, reliable, and efficient solutions.
+                Yashi IT Services is an established web development and design company that works with companies in all sectors of business.
               </p>
             </MDBCol>
 
@@ -53,26 +59,10 @@ export default function Footer() {
             <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Our Company</h6>
               <ul className="list-unstyled">
-                <li>
-                  <Link to="/" className="text-reset d-block">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/portfolio" className="text-reset d-block">
-                    Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contactUs" className="text-reset d-block">
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services" className="text-reset d-block">
-                    Services
-                  </Link>
-                </li>
+                <li><Link to="/" className="text-reset d-block">Home</Link></li>
+                <li><Link to="/portfolio" className="text-reset d-block">Portfolio</Link></li>
+                <li><Link to="/contactUs" className="text-reset d-block">Contact Us</Link></li>
+                <li><Link to="/services" className="text-reset d-block">Services</Link></li>
               </ul>
             </MDBCol>
 
@@ -80,26 +70,10 @@ export default function Footer() {
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Services</h6>
               <ul className="list-unstyled">
-                <li>
-                  <Link to="/services/Web-Development" className="text-reset d-block">
-                    Web Development
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/Mobile-Development" className="text-reset d-block">
-                    Mobile Development
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/Backend-Development" className="text-reset d-block">
-                    Backend Development
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/DevOps-&-Automation" className="text-reset d-block">
-                    DevOps & Automation
-                  </Link>
-                </li>
+                <li><Link to="/services/Web-Development" className="text-reset d-block">Web Development</Link></li>
+                <li><Link to="/services/Mobile-Development" className="text-reset d-block">Mobile Development</Link></li>
+                <li><Link to="/services/Backend-Development" className="text-reset d-block">Backend Development</Link></li>
+                <li><Link to="/services/DevOps-&-Automation" className="text-reset d-block">DevOps & Automation</Link></li>
               </ul>
             </MDBCol>
 
@@ -107,44 +81,19 @@ export default function Footer() {
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Portfolio</h6>
               <ul className="list-unstyled">
-                <li>
-                  <Link to="/projectDetail/E-Commerce" className="text-reset d-block">
-                    E-commerce UI
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/projectDetail/Saas-Dashboard" className="text-reset d-block">
-                    SaaS Dashboard Frontend
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/projectDetail/Portfolio-Website" className="text-reset d-block">
-                    Personal Portfolio Website
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/projectDetail/Interactive-Blog" className="text-reset d-block">
-                    Interactive Blog Platform
-                  </Link>
-                </li>
+                <li><Link to="/projectDetail/E-Commerce" className="text-reset d-block">E-commerce UI</Link></li>
+                <li><Link to="/projectDetail/Saas-Dashboard" className="text-reset d-block">SaaS Dashboard</Link></li>
+                <li><Link to="/projectDetail/Portfolio-Website" className="text-reset d-block">Portfolio Website</Link></li>
+                <li><Link to="/projectDetail/Interactive-Blog" className="text-reset d-block">Blog Platform</Link></li>
               </ul>
             </MDBCol>
 
             {/* Contact Section */}
             <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-              <p>
-                <MDBIcon icon="phone" className="me-3" />
-                +91-8720885782
-              </p>
-              <p>
-                <MDBIcon icon="envelope" className="me-3" />
-                info@yashiitservice.in
-              </p>
-              <p>
-                <MDBIcon icon="link" className="me-3" />
-                Yashiitservices
-              </p>
+              <p><MDBIcon icon="phone" className="me-3" /> +91-8720885782</p>
+              <p><MDBIcon icon="envelope" className="me-3" /> info@yashiitservice.in</p>
+              <p><MDBIcon icon="link" className="me-3" /> Yashi IT Services</p>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -152,7 +101,15 @@ export default function Footer() {
 
       {/* Horizontal Line & Copyright */}
       <hr className="my-4" />
-      <div className="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
+      <div
+        className="text-center p-4"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.3)",
+        }}
+      >
         © 2024 Yashi IT Services Pvt. Ltd. All Rights Reserved.
       </div>
     </MDBFooter>

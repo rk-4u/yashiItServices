@@ -4,7 +4,7 @@ export const projects = [
     title: "E-commerce UI Modernization",
     slug: "E-Commerce",
     description:
-      "Complete frontend overhaul of a major e-commerce platform serving 1M+ daily users. Implemented responsive design, dynamic product filtering, and real-time cart updates.",
+      "Complete frontend overhaul of a major e-commerce platform serving 1M+ daily users. Implemented responsive design, and real-time cart updates.",
 
     projectType: "Single Page Application (SPA)",
     developmentMethodology: "Component-Driven Development",

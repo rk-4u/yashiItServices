@@ -1,19 +1,73 @@
+/* Cursor styles */
 .custom-cursor {
-    width: 15px;
-    height: 15px;
-    background-color: rgba(0, 123, 255, 0.7); /* Blue with transparency */
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease-out;
-    mix-blend-mode: difference; /* Makes it stand out on different backgrounds */
-    z-index: 9999;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(0, 123, 255, 0.7); /* Blue with transparency */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  mix-blend-mode: difference; /* Makes it stand out on different backgrounds */
+  z-index: 9999;
+}
+
+.custom-cursor.hovered {
+  transform: translate(-50%, -50%) scale(2);
+  background-color: rgba(255, 0, 123, 0.7); /* Change color on hover */
+}
+
+/* Particle container */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998; /* Just below the cursor */
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual particle styles (Cursor particles) */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 223, 0, 0.8); /* Yellow particles */
+  animation: particle-animation 1s ease-out forwards;
+}
+
+/* Celebration particle styles (Click particles) */
+.celebration-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 87, 34, 0.9); /* Orange particles for celebration */
+  animation: celebration-animation 2s forwards;
+  transform-origin: center center;
+  opacity: 0; /* Start as invisible */
+}
+
+/* Particle animation (normal cursor particles) */
+@keyframes particle-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
-  .custom-cursor.hovered {
-    transform: translate(-50%, -50%) scale(2);
-    background-color: rgba(255, 0, 123, 0.7); /* Change color on hover */
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
   }
-  
+}
+
+/* Celebration particle animation (falling effect with slower gravity) */
+@keyframes celebration-animation {
+  0% {
+    transform: translate(var(--velocityX), var(--velocityY)) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--velocityX), calc(var(--velocityY) + 80vh)) scale(0.3); /* Fall towards the bottom */
+    opacity: 0;
+  }
+}

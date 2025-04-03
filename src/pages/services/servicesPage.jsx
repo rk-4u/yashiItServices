@@ -48,14 +48,14 @@ const ServicesPage = () => {
   const ctaSection = useAnimatedSection();
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full">
+    <div className="min-h-screen bg-white/10 backdrop-blur-lg border border-white/20 w-full text-white">
       {/* Hero Section */}
       <motion.section
         ref={heroSection.ref}
         animate={heroSection.controls}
         initial="hidden"
         variants={sectionVariants}
-        className="relative h-[500px] bg-cover bg-center flex items-center text-white w-full"
+        className="relative h-[500px] bg-cover bg-center flex items-center w-full"
         style={{
           backgroundImage: `url(${project?.imageUrl})`,
         }}
@@ -70,7 +70,7 @@ const ServicesPage = () => {
       </motion.section>
 
       {/* Content Sections */}
-      <div className=" mx-auto px-6 md:px-12 lg:px-24 py-16 w-full">
+      <div className="mx-auto px-6 md:px-12 lg:px-24 py-16 w-full">
         
         {/* Overview Section */}
         <motion.section
@@ -78,40 +78,27 @@ const ServicesPage = () => {
           animate={overviewSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="mb-16 max-w-6xl mx-auto"
+          className="mb-16 max-w-6xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-lg shadow-lg"
         >
           <h2 className="text-3xl font-bold mb-6">{project?.description}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6 w-full">
+            <motion.div variants={itemVariants} className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold mb-4">Core Features</h3>
               <ul className="space-y-3">
                 {project?.sections[0]?.features.map((feature, index) => (
                   <motion.li key={index} variants={itemVariants} className="flex items-center">
-                    <svg
-                      className="w-6 h-6 text-green-500 mr-3"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {feature}
+                    ✅ {feature}
                   </motion.li>
                 ))}
               </ul>
             </motion.div>
-            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6 w-full">
+            <motion.div variants={itemVariants} className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-lg shadow-lg">
               <img
                 src={project?.imageUrl}
                 alt={`${project?.title} illustration`}
                 className="w-full h-[350px] object-cover rounded-lg shadow-lg"
               />
-              <p className="text-gray-600 leading-relaxed mt-4">{project?.sections[0]?.content}</p>
+              <p className="leading-relaxed mt-4">{project?.sections[0]?.content}</p>
             </motion.div>
           </div>
         </motion.section>
@@ -130,12 +117,9 @@ const ServicesPage = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-lg p-6 text-center w-full"
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-lg shadow-lg text-center"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-600 font-bold">{index + 1}</span>
-                </div>
-                <h3 className="font-semibold mb-2">{step}</h3>
+                <h3 className="font-semibold">{step}</h3>
               </motion.div>
             ))}
           </div>
@@ -155,9 +139,9 @@ const ServicesPage = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-lg p-6 w-full"
+                className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-lg shadow-lg"
               >
-                <h3 className="font-semibold text-lg mb-2">{item}</h3>
+                <h3 className="font-semibold text-lg">{item}</h3>
               </motion.div>
             ))}
           </div>
@@ -169,7 +153,7 @@ const ServicesPage = () => {
           animate={ctaSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="max-w-4xl mx-auto bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl py-12 px-6 sm:p-16 text-white text-center shadow-xl w-full"
+          className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg border border-white/20 p-10 rounded-2xl text-center shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">

@@ -20,9 +20,18 @@ const TestimonialCard = ({ testimonial, index }) => {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="bg-gray-100 p-6 rounded-lg shadow-lg flex flex-col justify-between"
+      className="p-6 rounded-lg shadow-lg flex flex-col justify-between"
+      style={{
+        background: "rgba(255, 255, 255, 0.15)", // Light transparency
+        backdropFilter: "blur(12px) saturate(180%)", // Frosted glass effect
+        WebkitBackdropFilter: "blur(12px) saturate(180%)",
+        borderRadius: "12px",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+        boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.2)",
+        transition: "all 0.3s ease-in-out",
+      }}
     >
-      <p className="text-gray-800 mb-4">"{testimonial.text}"</p>
+      <p className="text-white mb-4">"{testimonial.text}"</p>
       <div className="flex items-center">
         <img
           src={testimonial.avatar}
@@ -30,8 +39,8 @@ const TestimonialCard = ({ testimonial, index }) => {
           className="w-12 h-12 rounded-full mr-3 object-cover"
         />
         <div className="leading-tight">
-          <p className="text-gray-700 font-bold">{testimonial.name}</p>
-          <p className="text-gray-500 text-sm">{testimonial.title}</p>
+          <p className="text-gray-200 font-bold">{testimonial.name}</p>
+          <p className="text-gray-300 text-sm">{testimonial.title}</p>
         </div>
       </div>
     </motion.div>
@@ -65,16 +74,25 @@ const Testimonials = () => {
   const titleInView = useInView(titleRef, { once: true });
 
   return (
-    <section id="testimonials" className="bg-white pt-16 pb-12 px-4">
+    <section
+      id="testimonials"
+      className="py-16 px-6"
+      style={{
+        background: "rgba(0, 0, 0, 0.4)", // Dark transparent background
+        backdropFilter: "blur(18px) saturate(150%)",
+        WebkitBackdropFilter: "blur(18px) saturate(150%)",
+        padding: "4rem 1rem",
+      }}
+    >
       {/* Title */}
       <motion.h2 
         ref={titleRef}
         initial={{ opacity: 0, y: -20 }}
         animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-bold text-center mb-8"
+        className="text-3xl font-bold text-center mb-8 text-white"
       >
-        What Our <span className="text-red-600">Customers</span> Say
+        What Our <span className="text-red-400">Customers</span> Say
       </motion.h2>
 
       {/* Testimonials Grid */}
