@@ -1,23 +1,82 @@
+/* Glassmorphic Background for Services Section */
+.services-container {
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Ensures layering for better visibility */
+  
+  /* Subtle dark background for readability */
+  background: rgba(0, 0, 0, 0.5); /* Darker background to improve text contrast */
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+}
+
+/* Service Cards - Glassmorphic Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Highlight on Hover */
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(200%);
+  transform: translateY(-5px);
+}
+
+/* Improved Readability for Titles */
+.services-container h2 {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Text Paragraphs - More Contrast */
+.services-container p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+/* CTA Button */
+.glass-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: black;
+}
+
+/* Sticky Position Fix */
 .sticky {
-    position: sticky;
-    top: 100px; /* Adjust this value to set how far from the top the title should stick */
-    align-self: flex-start;
-  }
+  position: sticky;
+  top: 100px;
+  align-self: flex-start;
+}
 
 /* Disable sticky on small screens */
 @media (max-width: 935px) {
-    .sticky {
-        position: static; /* Normal flow on small screens */
-    }
-}
-@media (max-width: 470px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-  .stat-left {
-    text-align: left;
-  }
-  .stat-right {
-    text-align: right;
+  .sticky {
+    position: static;
   }
 }

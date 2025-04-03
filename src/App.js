@@ -12,12 +12,16 @@ import ServiceMainPage from "./pages/services/serviceMainPage.jsx";
 import UserTable from "./pages/contactUs/UserTable.jsx"; // Import UserTable component
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import CursorAnimation from "./CursorAnimation.jsx";
+import CursorParticles from "./CursorParticles.jsx";
 
 
 function App() {
   return (
     <div className="App">
+      <CursorParticles/>
       <Router>
+        <CursorAnimation/>
         <Navbar />
         <ScrollToTop />
         <Routes>

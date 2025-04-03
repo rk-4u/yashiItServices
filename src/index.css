@@ -17,3 +17,12 @@ code {
 @tailwind utilities;
 
 @import "leaflet/dist/leaflet.css";
+
+.threejs-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Push behind all content */
+}

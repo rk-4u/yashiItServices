@@ -1,16 +1,19 @@
-/* Hero Section */
+/* Hero Section with Glass Effect */
 .hero {
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #003f8c;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  justify-content: center;
   padding: 4rem 1rem;
   color: white;
+  
+  /* Glassmorphic Background */
+  background: rgba(255, 255, 255, 0.1); /* Transparent white */
+  backdrop-filter: blur(10px) saturate(180%); /* Blur effect */
+  -webkit-backdrop-filter: blur(10px) saturate(180%); /* Safari support */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Container */
@@ -20,9 +23,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* Adjust layout for larger screens */
+/* Responsive adjustments */
 @media (min-width: 1024px) {
   .container {
     flex-direction: row;
@@ -30,32 +35,32 @@
   }
 }
 
-/* Text Content */
+/* Text Content with Animated Neon Border */
 .text-content {
   max-width: 600px;
-  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 12px;
+  position: relative;
+  
+  /* Glassmorphic Effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px) saturate(200%);
+  -webkit-backdrop-filter: blur(15px) saturate(200%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  /* Glowing Border Effect */
+  box-shadow: 0px 0px 10px rgba(190, 154, 252, 0.8);
+  animation: neonGlow 2s infinite alternate;
 }
 
-.subtitle {
-  font-size: 1.5rem;
-  color: #a0c4ff;
-  margin-bottom: 0.5rem;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 4rem;
+/* Neon Glow Animation */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0px 0px 5px rgba(190, 154, 252, 0.6), 0px 0px 15px rgba(190, 154, 252, 0.4);
   }
-}
-
-.highlight {
-  color: #4fc3f7;
+  100% {
+    box-shadow: 0px 0px 10px rgba(190, 154, 252, 0.9), 0px 0px 20px rgba(190, 154, 252, 0.6);
+  }
 }
 
 /* CTA Button */
@@ -65,18 +70,19 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: white;
-  background: transparent;
-  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50px;
+  backdrop-filter: blur(8px);
   transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-  background: white;
+  background: rgba(255, 255, 255, 0.4);
   color: black;
 }
 
-/* Image Section */
+/* Image Container */
 .image-container {
   display: flex;
   justify-content: center;
@@ -87,6 +93,7 @@
   max-width: 100%;
   height: auto;
   max-height: 400px;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
 }
 
 @media (min-width: 1024px) {

@@ -3,6 +3,7 @@ import "./CursorAnimation.css"; // Import the CSS file for styling
 
 const CursorAnimation = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  
 
   useEffect(() => {
     const moveCursor = (e) => {
