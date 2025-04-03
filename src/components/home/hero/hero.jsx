@@ -43,7 +43,7 @@ function Hero() {
         
         {/* Text Content */}
         <motion.div 
-          className="text-content text-center lg:text-left"
+          className="text-content text-center lg:text-left text-white"
           initial="hidden"
           animate="visible"
           variants={fadeInLeft}
@@ -52,17 +52,33 @@ function Hero() {
             IT Software & Design
           </motion.h2>
 
-          <motion.h1 className="title" variants={fadeInUp}>
+          <motion.h1 className="title lg:text-5xl" variants={fadeInUp}>
             Creating a better <span className="highlight">IT solutions</span>
           </motion.h1>
 
+          {/* Extra text only for PC (hidden on mobile) */}
+          <div className="hidden lg:block">
+            <motion.p className="description mt-4 text-white lg:text-lg" variants={fadeInUp}>
+              We provide innovative IT solutions that drive business success.  
+              Our team is dedicated to crafting scalable, high-quality digital products.  
+            </motion.p>
+
+            <motion.ul className="features-list mt-6 space-y-2 text-lg text-white lg:text-xl" variants={fadeInUp}>
+              <li>✅ Web & Mobile App Development</li>
+              <li>✅ AI & Automation Solutions</li>
+              <li>✅ Cloud Computing Services</li>
+              <li>✅ UI/UX & Branding</li>
+            </motion.ul>
+          </div>
+
+          {/* CTA Button */}
           <InstantTopLink to="/contactUs">
             <motion.button
               initial="hidden"
               animate="visible"
               whileHover="hover"
               variants={buttonVariants}
-              className="cta-button"
+              className="cta-button mt-6"
             >
               Start Now
             </motion.button>
@@ -80,7 +96,7 @@ function Hero() {
           <motion.img
             src="/laptop.png"
             alt="IT Solutions Illustration"
-            className="hero-image"
+            className="hero-image lg:max-h-[500px]" 
             variants={floatingImage}
           />
         </motion.div>

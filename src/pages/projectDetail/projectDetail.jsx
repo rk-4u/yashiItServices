@@ -50,7 +50,7 @@ const ProjectDetailPage = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-50 min-h-screen pt-32 pb-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"

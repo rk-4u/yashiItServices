@@ -92,29 +92,37 @@ const ServicesSection = () => {
         <div className="flex flex-col md:flex-row gap-0 md:gap-8 lg:gap-12">
           {/* Left Section with Fade */}
           <motion.div
-            ref={leftSectionRef}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{
-              opacity: isLeftInView ? 1 : 0,
-              y: isLeftInView ? 0 : -50,
-            }}
-            transition={{ duration: 0.8 }}
-            className="w-[87%] md:w-[140%] lg:w-[100%]"
-          >
-            <div className="md:sticky top-0 md:top-60">
-              <h2 className="text-4xl font-semibold mb-6">
-                Our Range Of{" "}
-                <span className="relative pb-[0.2rem]">
-                  Services
-                  <span className=" absolute bottom-1 left-0 w-full h-3 bg-[#003f8c] -z-10"></span>
-                </span>
-              </h2>
-              <p className="text-gray-600 mb-8">
-                We can cover a full spectrum of services that will be suited for
-                small and large organizations and businesses.
-              </p>
-            </div>
-          </motion.div>
+          ref={leftSectionRef}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{
+            opacity: isLeftInView ? 1 : 0,
+            y: isLeftInView ? 0 : -50,
+          }}
+          transition={{ duration: 0.8 }}
+          className="w-[87%] md:w-[140%] lg:w-[100%] pb-16"  // Added more bottom padding
+        >
+          <div className="md:sticky top-[100px] md:top-[120px] lg:top-[140px]">  {/* Adjusted top value */}
+            {/* Updated Heading with Bigger Font */}
+            <h2 className="text-5xl font-bold mb-8 text-gray-900">
+              Our Range Of Services
+            </h2>
+
+            {/* Additional Text for More Context */}
+            <p className="text-gray-700 text-lg mb-6">
+              We provide cutting-edge solutions tailored to your business needs.
+              Whether you're a startup or a large corporation, our expertise in 
+              development, marketing, and strategy ensures that your digital 
+              presence is <strong>strong, scalable, and impactful</strong>.
+            </p>
+
+            <p className="text-gray-700 text-lg mr-6">
+              Our team of experienced professionals delivers <strong>custom web solutions, 
+              digital marketing strategies, and tech innovations</strong> that drive results.
+              We work closely with you to ensure success, growth, and seamless integration 
+              of the latest technologies into your business.
+            </p>
+          </div>
+        </motion.div>
 
           {/* Right Section with Cards */}
           <motion.div

@@ -4,7 +4,7 @@ import InstantTopLink from "../../utils/instantTopLink";
 
 const ServiceCard = ({ title, description, slug, imageUrl, icon }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out w-full">
       <div className="flex justify-between items-center mb-4">
         <img src={icon} alt={title} className="w-12 h-12 object-contain" />
         <span className="text-xl font-medium text-gray-700">{title}</span>
@@ -27,16 +27,17 @@ const ServiceCard = ({ title, description, slug, imageUrl, icon }) => {
 
 const ServiceMainPage = () => {
   return (
-    <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen py-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-4">
+    <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen py-20 w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
         <h1 className="text-5xl font-extrabold text-center text-white mb-12">
           Our Premium Services
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
+        
+        {/* Fixes spacing issue by centering the grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8 justify-center w-full">
           {servicesContent.map((service) => (
-            <InstantTopLink to={`/services/${service.slug}`}>
+            <InstantTopLink key={service.id} to={`/services/${service.slug}`} className="w-full">
               <ServiceCard
-                key={service.id}
                 title={service.title}
                 description={service.description}
                 slug={service.slug}

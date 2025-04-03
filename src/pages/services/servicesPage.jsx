@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { servicesContent } from '../../utils/servicesContent';
 import InstantTopLink from '../../utils/instantTopLink';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const ServicesPage = () => {
-  const { serviceSlug } = useParams(); // Fetch the slug from the route parameter
+  const { serviceSlug } = useParams();
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    // Find the project based on the slug from the URL
     const foundProject = servicesContent.find((service) => service.slug === serviceSlug);
     setProject(foundProject);
   }, [serviceSlug]);
-
-  console.log(project, 'project');
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.3,
-        ease: 'easeOut',
-        when: 'beforeChildren',
-        staggerChildren: 0.3,
-      },
+      transition: { duration: 0.3, ease: 'easeOut', staggerChildren: 0.3 },
     },
   };
 
@@ -56,18 +48,21 @@ const ServicesPage = () => {
   const ctaSection = useAnimatedSection();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full">
       {/* Hero Section */}
       <motion.section
         ref={heroSection.ref}
         animate={heroSection.controls}
         initial="hidden"
         variants={sectionVariants}
-        className="relative h-96 bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
+        className="relative h-[500px] bg-cover bg-center flex items-center text-white w-full"
+        style={{
+          backgroundImage: `url(${project?.imageUrl})`,
+        }}
       >
-        <div className="absolute inset-0 bg-black opacity-50" />
-        <div className="relative container mx-auto px-6 h-full flex items-center">
-          <motion.div variants={itemVariants} className="max-w-3xl">
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative container mx-auto px-6 md:px-12 lg:px-24 text-center w-full">
+          <motion.div variants={itemVariants} className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">{project?.title}</h1>
             <p className="text-xl md:text-2xl">{project?.hero}</p>
           </motion.div>
@@ -75,18 +70,19 @@ const ServicesPage = () => {
       </motion.section>
 
       {/* Content Sections */}
-      <div className="container mx-auto px-6 py-16">
+      <div className=" mx-auto px-6 md:px-12 lg:px-24 py-16 w-full">
+        
         {/* Overview Section */}
         <motion.section
           ref={overviewSection.ref}
           animate={overviewSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="mb-16"
+          className="mb-16 max-w-6xl mx-auto"
         >
           <h2 className="text-3xl font-bold mb-6">{project?.description}</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6 w-full">
               <h3 className="text-xl font-semibold mb-4">Core Features</h3>
               <ul className="space-y-3">
                 {project?.sections[0]?.features.map((feature, index) => (
@@ -109,13 +105,13 @@ const ServicesPage = () => {
                 ))}
               </ul>
             </motion.div>
-            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6">
+            <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-lg p-6 w-full">
               <img
                 src={project?.imageUrl}
                 alt={`${project?.title} illustration`}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-[350px] object-cover rounded-lg shadow-lg"
               />
-              <p className="text-gray-600 leading-relaxed">{project?.sections[0]?.content}</p>
+              <p className="text-gray-600 leading-relaxed mt-4">{project?.sections[0]?.content}</p>
             </motion.div>
           </div>
         </motion.section>
@@ -126,15 +122,15 @@ const ServicesPage = () => {
           animate={processSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="mb-16"
+          className="mb-16 max-w-5xl mx-auto"
         >
           <h2 className="text-3xl font-bold mb-8">Our Process</h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {project?.sections[1]?.steps.map((step, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-lg p-6 text-center"
+                className="bg-white rounded-lg shadow-lg p-6 text-center w-full"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-blue-600 font-bold">{index + 1}</span>
@@ -151,15 +147,15 @@ const ServicesPage = () => {
           animate={expertiseSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="mb-16"
+          className="mb-16 max-w-6xl mx-auto"
         >
           <h2 className="text-3xl font-bold mb-8">Our Expertise</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {project?.expertise.map((item, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-lg p-6"
+                className="bg-white rounded-lg shadow-lg p-6 w-full"
               >
                 <h3 className="font-semibold text-lg mb-2">{item}</h3>
               </motion.div>
@@ -173,12 +169,11 @@ const ServicesPage = () => {
           animate={ctaSection.controls}
           initial="hidden"
           variants={sectionVariants}
-          className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl py-8 px-4 sm:p-12 text-white text-center"
+          className="max-w-4xl mx-auto bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl py-12 px-6 sm:p-16 text-white text-center shadow-xl w-full"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help transform your business with our {project?.title}{' '}
-            solutions.
+            Let's discuss how we can help transform your business with our {project?.title} solutions.
           </p>
           <InstantTopLink to="/contactUs">
             <button className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">

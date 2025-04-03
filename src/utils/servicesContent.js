@@ -7,7 +7,7 @@ export const servicesContent = [
     description: "Custom web solutions built with cutting-edge technologies.",
     description2:
     "Reach your audience where they are. From SEO to social media advertising, we create campaigns that generate leads.",
-    imageUrl: "https://media.licdn.com/dms/image/v2/D5612AQHyLFkv9YBcGA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715058774193?e=2147483647&v=beta&t=7yqv62DbvJWPvycGiDX4FGb79GOPsVB_dreB-SHh36E",
+    imageUrl: "https://imgs.search.brave.com/bSpH8Sn83eRrpeT5q9YPWXQaJSOa7uh9RhQ7DZjAflw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAxLzk0LzE5LzEw/LzM2MF9GXzE5NDE5/MTA1MV9rdlF6ZzBW/aXRSWE9ZQ0c3bDdo/Mjh0anRCNFZEN0pN/aC5qcGc",
     icon: "https://cdn.prod.website-files.com/6665f65e997e06ea00481f41/67038ceedd4a4de64802a691_Collaboration.svg",
     sections: [
       {

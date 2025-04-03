@@ -71,17 +71,18 @@ const WhyChooseUs = () => {
 
         {/* Right Image */}
         <motion.div 
-          initial="hidden" 
-          animate={isInView ? "visible" : "hidden"} 
-          variants={imageVariants} 
-          className="w-full md:w-1/2 flex justify-center"
-        >
-          <img
-            src="https://img.freepik.com/free-vector/programming-concept-illustration_114360-1351.jpg"
-            alt="Tech Stack Illustration"
-            className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
-          />
-        </motion.div>
+            initial="hidden" 
+            animate={isInView ? "visible" : "hidden"} 
+            variants={imageVariants} 
+            className="w-full md:w-1/2 flex justify-center"
+          >
+            <img
+              src="/undraw_feeling-proud_tdos.svg"
+              alt="Tech Stack Illustration"
+              className="w-full max-w-md md:max-w-lg"
+            />
+          </motion.div>
+
 
       </div>
     </section>

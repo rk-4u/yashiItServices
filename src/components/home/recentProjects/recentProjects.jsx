@@ -33,7 +33,7 @@ const TiltCard = ({ children }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transform, transition }}
-      className="rounded-xl overflow-hidden shadow-lg transition-transform"
+      className="rounded-xl overflow-hidden shadow-md transition-transform"
     >
       {children}
     </div>
@@ -50,26 +50,28 @@ const ProjectCard = ({ project, index }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="md:w-[85%] lg:w-[80%] mx-auto mb-10 md:mb-16"
+      className="md:w-[90%] lg:w-[85%] mx-auto mb-6 md:mb-10"
     >
       <TiltCard>
         <div className="relative overflow-hidden rounded-2xl">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-[250px] md:h-[300px] object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
+            className="w-full h-[250px] md:h-[280px] object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
           />
         </div>
       </TiltCard>
 
-      <div className="py-5 px-6 bg-white shadow-md rounded-b-2xl">
-        <h3 className="text-2xl font-semibold mb-3 text-gray-900">
+      <div className="py-4 px-5 bg-white shadow-md rounded-b-2xl">
+        <h3 className="text-xl md:text-2xl font-semibold mb-2 text-gray-900">
           {project.id}. {project.title}
         </h3>
-        <p className="text-lg text-gray-700 leading-relaxed">{project.description}</p>
+        <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+          {project.description}
+        </p>
 
         <InstantTopLink to={`/projectDetail/${project.slug}`}>
-          <button className="mt-5 px-6 py-2 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-[#003f8c] hover:text-white transition-all duration-300">
+          <button className="mt-4 px-5 py-2 border-2 border-gray-900 text-gray-900 rounded-full hover:bg-[#003f8c] hover:text-white transition-all duration-300">
             View Detail
           </button>
         </InstantTopLink>
@@ -80,27 +82,27 @@ const ProjectCard = ({ project, index }) => {
 
 const RecentProjects = () => {
   return (
-    <section className="bg-gray-100 text-black py-20 px-6">
+    <section className="bg-gray-100 text-black py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Recent Projects
           </h2>
-          <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">
+          <p className="text-base md:text-lg text-gray-700 max-w-4xl mx-auto">
             At Hexaly, we deliver **innovative solutions** that drive results. 
             Here are some of our **recent projects**, showcasing our expertise.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <InstantTopLink to="/portfolio">
-            <button className="px-8 py-3 bg-[#003f8c] text-white rounded-full text-lg shadow-md hover:bg-blue-800 transition-all duration-300">
+            <button className="px-7 py-3 bg-[#003f8c] text-white rounded-full text-lg shadow-md hover:bg-blue-800 transition-all duration-300">
               View More
             </button>
           </InstantTopLink>

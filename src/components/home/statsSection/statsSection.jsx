@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import useCountUp from "../useCountUp/useCountUp"
+import useCountUp from "../useCountUp/useCountUp";
 
 const statsData = [
   { number: 15, suffix: '+', label: 'YEARS OF EXPERTISE', icon: '⏳' },
@@ -9,7 +9,7 @@ const statsData = [
   { number: 40, suffix: '+', label: 'SKILLED EXPERTS', icon: '⭐' },
 ];
 
-const StatItem = ({ number, suffix, label, icon }) => {
+const StatItem = ({ number, suffix, label }) => {
   const itemRef = React.useRef(null);
   const controls = useAnimation();
   const isInView = useInView(itemRef, { once: true });
@@ -24,7 +24,7 @@ const StatItem = ({ number, suffix, label, icon }) => {
   return (
     <motion.div
       ref={itemRef}
-      className="text-center mt-6 mb-6 md:mb-0"
+      className="text-center mt-4 mb-4 md:mb-0"  // Reduced space
       initial={{ opacity: 0, scale: 0.8 }}
       animate={controls}
       variants={{
@@ -33,13 +33,13 @@ const StatItem = ({ number, suffix, label, icon }) => {
       }}
       transition={{ duration: 0.8 }}
     >
-      <div className="flex justify-center items-center mb-2">
+      <div className="flex justify-center items-center mb-1">
         <span className="text-4xl font-bold text-red-600">
           {count}
           {suffix}
         </span>
       </div>
-      <p className="text-sm font-semibold mt-2">{label}</p>
+      <p className="text-sm font-semibold">{label}</p>
     </motion.div>
   );
 };
@@ -58,7 +58,7 @@ const StatsSection = () => {
   return (
     <motion.div 
       ref={sectionRef}
-      className="mb-14"
+      className="mb-8"  // Reduced space below section
       initial="hidden"
       animate={sectionControls}
       variants={{
@@ -67,17 +67,17 @@ const StatsSection = () => {
       }}
       transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto flex flex-col md:flex-row justify-evenly items-center md:px-8 lg:px-24">
+      <div className="container mx-auto flex flex-col md:flex-row justify-evenly items-center md:px-6 lg:px-16">
         {statsData.map((item, index) => (
           <React.Fragment key={index}>
             <StatItem
               number={item.number}
               suffix={item.suffix}
               label={item.label}
-              icon={item.icon}
             />
             {index < statsData.length - 1 && (
-              <div className="block md:border-l border-gray-300 md:h-24 md:mx-6 w-[90%] md:w-auto border-t md:border-t-0 mt-4 md:mt-0"></div>
+              <div className="block md:border-l border-gray-300 md:h-20 md:mx-3 w-[90%] md:w-auto border-t md:border-t-0 mt-2 md:mt-0"></div>  
+              // Reduced height and margin of separator
             )}
           </React.Fragment>
         ))}
