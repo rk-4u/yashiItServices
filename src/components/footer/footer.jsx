@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from "mdb-react-ui-kit";
 
+
 export default function Footer() {
   return (
     <MDBFooter
@@ -19,22 +20,19 @@ export default function Footer() {
           <span>Get connected with us on social networks:</span>
         </div>
         <div>
-          <a href="#" className="me-4 text-reset">
+          <a href="https://www.facebook.com/share/1NCVQ4JhGq/" className="me-4 text-reset">
             <MDBIcon fab icon="facebook-f" />
           </a>
-          <a href="#" className="me-4 text-reset">
-            <MDBIcon fab icon="twitter" />
-          </a>
-          <a href="#" className="me-4 text-reset">
+          <a href="https://www.google.com/search?q=yashi+it+services" className="me-4 text-reset">
             <MDBIcon fab icon="google" />
           </a>
-          <a href="#" className="me-4 text-reset">
+          <a href="https://www.instagram.com/yashiitservices?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="me-4 text-reset">
             <MDBIcon fab icon="instagram" />
           </a>
-          <a href="#" className="me-4 text-reset">
+          <a href="https://www.linkedin.com/company/yashi-it-services/" className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" />
           </a>
-          <a href="#" className="me-4 text-reset">
+          <a href="https://github.com/YashPuniwala" className="me-4 text-reset">
             <MDBIcon fab icon="github" />
           </a>
         </div>
