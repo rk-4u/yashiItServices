@@ -43,6 +43,7 @@ const ContactUs = () => {
         email: formData.email.trim(),
         Message: formData.Message.trim(),
       };
+      console.log("Sending request to backend:", requestData);
 
       await axios.post(`${BACKEND_URL}/users/register`, requestData, {
         headers: { "Content-Type": "application/json" },
