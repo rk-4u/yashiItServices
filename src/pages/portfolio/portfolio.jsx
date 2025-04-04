@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Code, Layout, ArrowRight, Mail, Boxes } from "lucide-react";
+import { Code, Layout, ArrowRight, Boxes } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects } from "../../utils/projects";
 import InstantTopLink from "../../utils/instantTopLink";

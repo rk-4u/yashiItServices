@@ -1,0 +1,32 @@
+/* Fixed WhatsApp Button */
+.button2 {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between text and icon */
+    padding: 8px 16px; /* Adjusted padding */
+    font-size: 14px; /* Smaller font */
+    font-weight: bold;
+    border-radius: 5px;
+    background: #e8e8e8;
+    color: #090909;
+    border: 1px solid #e8e8e8;
+    /* box-shadow: 3px 3px 6px #c5c5c5, -3px -3px 6px #ffffff; */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: #009087;
+    color: white;
+    border: 1px solid #009087;
+    /* box-shadow: 3px 3px 6px #00776b, -3px -3px 6px #00a79d; */
+}
+
+.button2:active {
+    box-shadow: inset 3px 3px 6px #c5c5c5, inset -3px -3px 6px #ffffff;
+}
+
+.button2 img {
+    width: 18px; /* Smaller icon */
+    height: 18px;
+}

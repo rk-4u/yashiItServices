@@ -23,38 +23,35 @@ const UserTable = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">User List</h2>
+    <div className="container mx-auto px-4 mt-24 mb-24">
+      <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl shadow-lg p-6 sm:p-10">
+        <h2 className="text-2xl font-bold text-white mb-6 text-center">User List</h2>
 
-      {loading && <p className="text-gray-600">Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+        {loading && <p className="text-gray-200 text-center">Loading...</p>}
+        {error && <p className="text-red-400 text-center">{error}</p>}
 
-      {!loading && !error && (
-        <table className="table-auto w-full border-collapse border border-gray-400">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="border p-2">ID</th>
-              <th className="border p-2">First Name</th>
-              <th className="border p-2">Last Name</th>
-              <th className="border p-2">Phone</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Message</th>
-            </tr>
-          </thead>
-          <tbody>
+        {!loading && !error && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {users.map((user) => (
-              <tr key={user._id} className="text-center">
-                <td className="border p-2">{user._id}</td>
-                <td className="border p-2">{user.FirstName}</td>
-                <td className="border p-2">{user.LastName}</td>
-                <td className="border p-2">{user.phone}</td>
-                <td className="border p-2">{user.email}</td>
-                <td className="border p-2">{user.Message}</td>
-              </tr>
+              <details
+                key={user._id}
+                className="group bg-white/20 border border-white/30 rounded-lg p-4 cursor-pointer transition hover:bg-white/30"
+              >
+                <summary className="flex justify-between items-center text-white font-semibold">
+                  {user.FirstName} {user.LastName}
+                  <span className="text-sm text-blue-300 group-open:hidden">▼</span>
+                  <span className="text-sm text-blue-300 hidden group-open:inline">▲</span>
+                </summary>
+                <div className="mt-2 text-gray-200 space-y-2 text-sm">
+                  <p><strong>Email:</strong> {user.email}</p>
+                  <p><strong>Phone:</strong> {user.phone}</p>
+                  <p><strong>Message:</strong> {user.Message}</p>
+                </div>
+              </details>
             ))}
-          </tbody>
-        </table>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
