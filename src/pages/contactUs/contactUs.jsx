@@ -171,9 +171,10 @@ const ContactUs = () => {
           </div>
         ))}
       </div>
-
+      
       {/* Map Component */}
-      <Map />
+        <Map />
+      
     </div>
   );
 };
